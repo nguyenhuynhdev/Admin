@@ -1,0 +1,264 @@
+﻿<Window x:Class="Admin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa ="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+        xmlns:lvc ="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:uc="clr-namespace:Admin.User_Controls"
+        mc:Ignorable="d"
+        Title="Admin" Height="740" Width="1280" WindowStartupLocation="CenterScreen"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Left menu-->
+      
+            <Border CornerRadius="10 0 0 10">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="#223266" Offset="0"/>
+                        <GradientStop Color="#27396b" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Vertical">
+                    <!--User name-->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 35 0 0">
+                        <Border CornerRadius="10" Width="40" Height="40">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                                    <GradientStop Color="#7f7cf1" Offset="0"/>
+                                    <GradientStop Color="#d3b7ff" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <TextBlock Text="NH" Foreground="#ffffff" FontSize="22" FontWeight="SemiBold" 
+                                   TextAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <StackPanel Margin="10 0 0 0" VerticalAlignment="Center">
+                            <TextBlock Text="Nguyen Huynh" FontSize="15" Margin="0 0 0 5" Foreground="#c2cfff"/>
+                            <TextBlock Text="nguyenhuynhdev@gmail.com" FontSize="11" Foreground="#7788bf"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <!--Divider-->
+                    <Separator Height="0.8" Margin="20 30" Background="#46558a"/>
+                    <!--Button-->
+                    <Button Style="{StaticResource menuButtonActive}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Home" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Dashboard" Style="{StaticResource MenuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource menuButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="MobileAlt" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Mobile" Style="{StaticResource MenuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource menuButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Folder" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Folder" Style="{StaticResource MenuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource menuButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Envelope" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Mail" Style="{StaticResource MenuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource menuButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Database" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Database" Style="{StaticResource MenuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource menuButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="Cogs" Style="{StaticResource menuButtonIcon}" RenderTransformOrigin="0.528,0.5"/>
+                            <TextBlock Text="Settings" Style="{StaticResource MenuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+
+                    <!--Divider-->
+                    <Separator Height="0.8" Margin="20 30" Background="#46558a"/>
+
+                    <Button Style="{StaticResource menuButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <fa:IconImage Icon="PowerOff" Style="{StaticResource menuButtonIcon}"/>
+                            <TextBlock Text="Logout" Style="{StaticResource MenuButtonText}"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+    
+
+        <!--Main Selection-->
+        <Border Grid.Column="1" CornerRadius="0 10 10 0" MouseDown="Border_MouseDown">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                    <GradientStop Color="#41518f" Offset="0"/>
+                    <GradientStop Color="#2c386c" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--Top menu-->
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 30 20">
+                    <Button Content="Today" Style="{StaticResource topMenuButton}"/>
+                    <Button Content="Week" Style="{StaticResource topMenuButton}" Background="#5b60c4" Foreground="#ffffff"/>
+                    <Button Content="Month" Style="{StaticResource topMenuButton}"/>
+                    <Button Content="Year" Style="{StaticResource topMenuButton}"/>
+                </StackPanel>
+                
+                <!--Title-->
+                <TextBlock Text="Good morning! Nguyen" FontSize="26" Foreground="#ccd7ff" HorizontalAlignment="Left" Margin="50 35 0 20"/>
+           
+                <!--Info card-->
+
+                <Grid Grid.Row="1" Margin="50 20 15 40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <uc:InforCard Grid.Column="0" Title="Total Views" Number="600,000" Icon="Eye" BackGround1="#827bff" BackGround2="#d9b5ff"
+                                  EllipseBackGround1="#b298fd" EllipseBackGround2="#e4bbff"/>
+                    <uc:InforCard Grid.Column="1" Title="Total Orders" Number="210,000" Icon="ShoppingCart" BackGround1="#fd8a87" BackGround2="#f3ab92"
+                                  EllipseBackGround1="#fbd5a8" EllipseBackGround2="#fdb89b"/>
+                    <uc:InforCard Grid.Column="2" Title="Total Revenue" Number="600,000" Icon="Coins" BackGround1="#fc84cb" BackGround2="#fc8fae"
+                                  EllipseBackGround1="#fc8fae" EllipseBackGround2="#ffabe6"/>
+                </Grid>
+              
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+                    <!--Chart seclection-->
+                    <Border CornerRadius="20" Padding="35 25" Background="#243771" Margin="50 0 10 40">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Orientation="Horizontal" Margin="0 0 0 25">
+                                <fa:IconImage Icon="Circle" Style="{StaticResource titleIcon}"/>
+                                <TextBlock Text="Profit" Style="{StaticResource titleText}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0 0 0 25">
+                                <TextBlock Text="70000" Foreground="#717eb2" Margin="0 0 0 25"/>
+                                <TextBlock Text="60000" Foreground="#717eb2" Margin="0 0 0 25"/>
+                                <TextBlock Text="50000" Foreground="#717eb2" Margin="0 0 0 25"/>
+                                <TextBlock Text="40000" Foreground="#717eb2" Margin="0 0 0 25"/>
+                                <TextBlock Text="30000" Foreground="#717eb2" Margin="0 0 0 25"/>
+                                <TextBlock Text="20000" Foreground="#717eb2" Margin="0 0 0 25"/>
+                                <TextBlock Text="10000" Foreground="#717eb2" Margin="0 0 0 25"/>
+                                <TextBlock Text="0" Foreground="#717eb2" HorizontalAlignment="Right"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                                <TextBlock Text="1" Foreground="#717eb2" Margin="41 0 0 0"/>
+                                <TextBlock Text="2" Foreground="#717eb2" Margin="41 0 0 0"/>
+                                <TextBlock Text="3" Foreground="#717eb2" Margin="41 0 0 0"/>
+                                <TextBlock Text="4" Foreground="#717eb2" Margin="41 0 0 0"/>
+                                <TextBlock Text="5" Foreground="#717eb2" Margin="41 0 0 0"/>
+                                <TextBlock Text="6" Foreground="#717eb2" Margin="41 0 0 0"/>
+                                <TextBlock Text="7" Foreground="#717eb2" Margin="41 0 0 0"/>
+                                <TextBlock Text="8" Foreground="#717eb2" Margin="41 0 0 0"/>
+                                <TextBlock Text="9" Foreground="#717eb2" Margin="41 0 0 0"/>
+                                <TextBlock Text="10" Foreground="#717eb2" Margin="41 0 0 0"/>
+                                <TextBlock Text="11" Foreground="#717eb2" Margin="41 0 0 0"/>
+                                <TextBlock Text="12" Foreground="#717eb2" Margin="41 0 0 0"/>
+                            </StackPanel>
+                            
+                            <!--Chart-->
+                            <lvc:CartesianChart Grid.Row="1" Margin="45 0 0 25">
+                                <lvc:CartesianChart.Background>
+                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                        <GradientStop Color="#26376f" Offset="0"/>
+                                        <GradientStop Color="#6a6ae4" Offset="1.5"/>
+                                    </LinearGradientBrush>
+                                </lvc:CartesianChart.Background>
+
+                                <lvc:CartesianChart.DataTooltip>
+                                    <lvc:DefaultTooltip Background="#24336a" Foreground="#d5e2ff"/>
+                                </lvc:CartesianChart.DataTooltip>
+                                <!--X chart-->
+                                <lvc:CartesianChart.AxisX>
+                                    <lvc:Axis MinValue="1" MaxValue="5" Foreground="#717eb2" ShowLabels="False">
+                                        <lvc:Axis.Separator>
+                                            <lvc:Separator StrokeThickness="0"/>
+                                        </lvc:Axis.Separator>
+                                    </lvc:Axis>
+                                </lvc:CartesianChart.AxisX>
+                                <!--Y chart-->
+                                <lvc:CartesianChart.AxisY>
+                                    <lvc:Axis MinValue="0" MaxValue="60000"  Foreground="#717eb2" ShowLabels="False">
+                                        <lvc:Axis.Separator>
+                                            <lvc:Separator StrokeThickness="0"/>
+                                        </lvc:Axis.Separator>
+                                    </lvc:Axis>
+                                </lvc:CartesianChart.AxisY>
+                                <!--Dummy data chart-->
+                                <lvc:CartesianChart.Series>
+                                    <lvc:LineSeries Stroke="#adaf4d" StrokeThickness="2" Values="20000,17000,30000,15000,50000,3000,20000">
+                                        <lvc:LineSeries.Fill>
+                                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                                <GradientStop Color="#b397e2" Offset="0.4"/>
+                                                <GradientStop Color="#6a6ae4" Offset="1.2"/>
+                                            </LinearGradientBrush>
+                                        </lvc:LineSeries.Fill>
+                                    </lvc:LineSeries>
+                                </lvc:CartesianChart.Series>
+                            </lvc:CartesianChart>
+                        </Grid>
+                    </Border>
+
+                    <!--Orders seclection-->
+                    <Border Grid.Column="1" CornerRadius="20" Padding="0 25" Background="#243771" Margin="15 0 47 40">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Orientation="Horizontal" Margin="20 0 0 15">
+                                <fa:IconImage Icon="Circle" Style="{StaticResource titleIcon}"/>
+                                <TextBlock Text="Last Orders" Style="{StaticResource titleText}"/>
+                            </StackPanel>
+                            
+                            <!--Orders-->
+                            <StackPanel Grid.Row="1">
+                                <uc:Order Title="T-Shirt Embrace" Description="John Doe - 10:30" Icon="Tshirt"/>
+                                <uc:Order Title="Shoes Kamoin" Description="Karim Penci - 12:00" Icon="ShoePrints"/>
+                                <uc:Order Title="Socks Besaze" Description="Mari Sume - 13:45" Icon="Socks"/>
+                                <uc:Order Title="T-Shirt Argok" Description="Ali Qackman - 14:30" Icon="Tshirt"/>
+                                <uc:Order Title="Hat Jackman" Description="Jack Praide - 15:30" Icon="HardHat"/>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                  
+                </Grid>
+            </Grid>
+            
+        </Border>
+    </Grid>
+</Window>
